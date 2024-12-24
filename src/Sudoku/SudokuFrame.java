@@ -56,12 +56,25 @@ public class SudokuFrame extends JFrame {
 		sPanel.newSudoku(generatedPuzzle);
 		sPanel.setFontSize(fontSize);
 		buttonSelectionPanel.removeAll();
+
 		for (String value : generatedPuzzle.getValidValues()){
 			JButton button = new JButton(value);
 			button.setPreferredSize(new Dimension(40,40));
 			button.addActionListener(sPanel.new NumActionListener());
 			buttonSelectionPanel.add(button);
 		}
+
+		JButton clearButton = new JButton("Clear");
+		clearButton.setPreferredSize(new Dimension(80, 40));
+		clearButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				sPanel.clearSelectedSlot();
+			}
+		});
+		buttonSelectionPanel.add(clearButton);
+
+
 		sPanel.repaint();
 		buttonSelectionPanel.revalidate();
 		buttonSelectionPanel.repaint();

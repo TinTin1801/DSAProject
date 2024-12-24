@@ -112,8 +112,18 @@ public class SudokuPanel  extends JPanel {
 		}
 	}
 
-
-
+	public void clearSelectedSlot() {
+		if (curSelectedCol != -1 && curSelectedRow != -1) {
+			if (puzzle.isSlotMutable(curSelectedRow, curSelectedCol)) {
+				puzzle.makeSlotEmpty(curSelectedRow, curSelectedCol);
+				repaint();
+			} else {
+				System.out.println("This cell can not be deleted.");
+			}
+		} else {
+			System.out.println("You haven't chosen the cell.");
+		}
+	}
 
 	private class MouseAdapter extends MouseInputAdapter{
 		@Override
