@@ -14,6 +14,7 @@ import java.awt.font.FontRenderContext;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputAdapter;
+import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public class SudokuPanel  extends JPanel {
@@ -118,10 +119,16 @@ public class SudokuPanel  extends JPanel {
 				puzzle.makeSlotEmpty(curSelectedRow, curSelectedCol);
 				repaint();
 			} else {
-				System.out.println("This cell can not be deleted.");
+				JOptionPane.showMessageDialog(this,
+						"This cell can not be deleted.",
+						"Clear Error",
+						JOptionPane.ERROR_MESSAGE);
 			}
 		} else {
-			System.out.println("You haven't chosen the cell.");
+			JOptionPane.showMessageDialog(this,
+					"Please select a cell to delete.",
+					"Clear Error",
+					JOptionPane.WARNING_MESSAGE);
 		}
 	}
 
